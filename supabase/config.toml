@@ -1,0 +1,4 @@
+project_id = "dvvajlsnxazudinepxlb"
+
+[functions.mogappair-chat]
+verify_jwt = false
