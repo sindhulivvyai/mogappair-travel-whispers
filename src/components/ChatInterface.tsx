@@ -190,21 +190,19 @@ export const ChatInterface = () => {
             </div>
           </div>
 
-          {messages.length === 0 && (
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-              {suggestedQuestions.map((suggestion, index) => (
-                <Button
-                  key={index}
-                  variant="outline"
-                  className="justify-start h-auto py-3 px-4 hover:shadow-soft transition-all duration-300 group"
-                  onClick={() => handleSuggestionClick(suggestion.text)}
-                >
-                  <suggestion.icon className={`w-5 h-5 mr-3 ${suggestion.color} group-hover:scale-110 transition-transform`} />
-                  <span className="text-left">{suggestion.text}</span>
-                </Button>
-              ))}
-            </div>
-          )}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {suggestedQuestions.map((suggestion, index) => (
+              <Button
+                key={index}
+                variant="outline"
+                className="justify-start h-auto py-3 px-4 hover:shadow-soft transition-all duration-300 group"
+                onClick={() => handleSuggestionClick(suggestion.text)}
+              >
+                <suggestion.icon className={`w-5 h-5 mr-3 ${suggestion.color} group-hover:scale-110 transition-transform`} />
+                <span className="text-left">{suggestion.text}</span>
+              </Button>
+            ))}
+          </div>
         </div>
 
         {messages.length > 0 && (
@@ -242,6 +240,25 @@ export const ChatInterface = () => {
                   )}
                 </div>
               ))}
+              
+              {!isLoading && (
+                <div className="pt-4 border-t border-border/30 mt-6">
+                  <p className="text-sm text-muted-foreground mb-3">Continue exploring:</p>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    {suggestedQuestions.map((suggestion, index) => (
+                      <Button
+                        key={index}
+                        variant="outline"
+                        className="justify-start h-auto py-3 px-4 hover:shadow-soft transition-all duration-300 group"
+                        onClick={() => handleSuggestionClick(suggestion.text)}
+                      >
+                        <suggestion.icon className={`w-5 h-5 mr-3 ${suggestion.color} group-hover:scale-110 transition-transform`} />
+                        <span className="text-left text-sm">{suggestion.text}</span>
+                      </Button>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           </ScrollArea>
         )}
