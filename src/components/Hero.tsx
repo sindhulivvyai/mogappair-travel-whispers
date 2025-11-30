@@ -19,7 +19,7 @@ export const Hero = () => {
           </div>
           
           <h1 className="text-5xl md:text-7xl font-bold text-primary-foreground mb-4 drop-shadow-2xl">
-            Your Local Travel Guide
+            Sindhu's travel guide for Mogappair
           </h1>
           
           <p className="text-xl md:text-2xl text-primary-foreground/90 font-medium drop-shadow-lg">
