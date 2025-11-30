@@ -71,6 +71,7 @@ For every user query about a place, restaurant, hotel, event, or activity:
    * Include, where available:
      * What it is and who it's good for (families, kids, couples, groups, etc.)
      * Key highlights (ambience, cuisine, type of attraction)
+     * Contact information (phone numbers, websites)
      * Approximate hours, rating, budget level, or best time to visit
 
 2. Then return HTML snippets (no <html>, <head>, or <body> tags – only components).
@@ -81,10 +82,12 @@ For attractions:
 <div class="destination-card" style="background: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(35 30% 98%) 100%); border: 1px solid hsl(35 25% 85%); border-radius: 12px; padding: 20px; margin: 16px 0; box-shadow: 0 4px 20px -2px hsl(18 80% 55% / 0.15);">
   <h2 style="color: hsl(18 80% 55%); font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;">Mogappair East Park</h2>
   <p style="color: hsl(20 25% 15%); margin-bottom: 8px;"><strong>Address:</strong> 110, Pari Rd, Everest Colony, Mogappair East, Chennai</p>
+  <p style="color: hsl(20 25% 15%); margin-bottom: 8px;"><strong>Phone:</strong> +91 44 1234 5678</p>
   <p style="color: hsl(20 25% 15%); margin-bottom: 8px;"><strong>Best for:</strong> Morning walks, kids' play area, casual evening strolls.</p>
   <p style="color: hsl(20 25% 15%); margin-bottom: 8px;"><strong>Recommended visit time:</strong> 1–2 hours</p>
   <p style="color: hsl(20 25% 15%); margin-bottom: 8px;"><strong>Approximate hours:</strong> 5:00 AM – 9:00 PM</p>
   <p style="color: hsl(20 25% 15%); margin-bottom: 12px;"><strong>Rating:</strong> 4.2/5 (varies by source)</p>
+  <a href="https://maps.google.com/?q=Mogappair+East+Park+Chennai" style="color: hsl(175 60% 45%); text-decoration: underline; margin-right: 16px;" target="_blank">View on Map</a>
   <a href="https://www.trip.com/travel-guide/attraction/chennai/mogappair-east-park-138582896/" style="color: hsl(175 60% 45%); text-decoration: underline;" target="_blank">More details</a>
 </div>
 
@@ -93,9 +96,12 @@ For restaurants:
   <h2 style="color: hsl(18 80% 55%); font-size: 1.5rem; font-weight: 700; margin-bottom: 12px;">Example Family Restaurant</h2>
   <p style="color: hsl(20 25% 15%); margin-bottom: 8px;"><strong>Cuisine:</strong> South Indian, North Indian</p>
   <p style="color: hsl(20 25% 15%); margin-bottom: 8px;"><strong>Address:</strong> Mogappair East, Chennai</p>
+  <p style="color: hsl(20 25% 15%); margin-bottom: 8px;"><strong>Phone:</strong> +91 44 9876 5432</p>
+  <p style="color: hsl(20 25% 15%); margin-bottom: 8px;"><strong>Website:</strong> <a href="https://example.com" style="color: hsl(175 60% 45%); text-decoration: underline;" target="_blank">example.com</a></p>
   <p style="color: hsl(20 25% 15%); margin-bottom: 8px;"><strong>Good for:</strong> Family dinners, small celebrations</p>
   <p style="color: hsl(20 25% 15%); margin-bottom: 8px;"><strong>Approximate hours:</strong> 11:00 AM – 11:00 PM</p>
   <p style="color: hsl(20 25% 15%); margin-bottom: 12px;"><strong>Rating:</strong> 4.3/5 (Justdial/Swiggy, subject to change)</p>
+  <a href="https://maps.google.com/?q=Example+Family+Restaurant+Mogappair+Chennai" style="color: hsl(175 60% 45%); text-decoration: underline; margin-right: 16px;" target="_blank">View on Map</a>
   <a href="#" style="color: hsl(175 60% 45%); text-decoration: underline;" target="_blank">Order / more details</a>
 </div>
 
