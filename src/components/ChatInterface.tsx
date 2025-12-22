@@ -18,18 +18,37 @@ interface Message {
   content: string;
 }
 
-export const ChatInterface = () => {
+interface ChatInterfaceProps {
+  initialQuery?: string;
+  onQueryProcessed?: () => void;
+}
+
+export const ChatInterface = ({ initialQuery, onQueryProcessed }: ChatInterfaceProps) => {
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const { toast } = useToast();
   const scrollRef = useRef<HTMLDivElement>(null);
+  const hasProcessedInitialQuery = useRef(false);
 
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
     }
   }, [messages]);
+
+  // Handle initial query from Quick Links
+  useEffect(() => {
+    if (initialQuery && !hasProcessedInitialQuery.current && !isLoading) {
+      hasProcessedInitialQuery.current = true;
+      setMessages((prev) => [...prev, { role: "user", content: initialQuery }]);
+      setIsLoading(true);
+      streamChat(initialQuery).then(() => {
+        setIsLoading(false);
+        onQueryProcessed?.();
+      });
+    }
+  }, [initialQuery]);
 
   const streamChat = async (userMessage: string) => {
     const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/mogappair-chat`;
