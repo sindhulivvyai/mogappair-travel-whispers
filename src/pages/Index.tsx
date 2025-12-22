@@ -1,16 +1,31 @@
+import { useState, useCallback } from "react";
 import { Hero } from "@/components/Hero";
 import { ChatInterface } from "@/components/ChatInterface";
 import { Features } from "@/components/Features";
 import EmergencyContacts from "@/components/EmergencyContacts";
 import HealthcareDirectory from "@/components/HealthcareDirectory";
+import { QuickLinks } from "@/components/QuickLinks";
 
 const Index = () => {
+  const [pendingQuery, setPendingQuery] = useState<string | undefined>();
+
+  const handleQueryClick = useCallback((query: string) => {
+    setPendingQuery(query);
+  }, []);
+
+  const handleQueryProcessed = useCallback(() => {
+    setPendingQuery(undefined);
+  }, []);
+
   return (
     <div className="min-h-screen">
       <Hero />
       <EmergencyContacts />
       <HealthcareDirectory />
-      <ChatInterface />
+      <QuickLinks onQueryClick={handleQueryClick} />
+      <div id="chat-section">
+        <ChatInterface initialQuery={pendingQuery} onQueryProcessed={handleQueryProcessed} />
+      </div>
       <Features />
     </div>
   );
