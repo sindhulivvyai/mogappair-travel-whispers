@@ -1,5 +1,6 @@
 import { useState, useCallback } from "react";
 import { Hero } from "@/components/Hero";
+import { Header } from "@/components/Header";
 import { ChatInterface } from "@/components/ChatInterface";
 import { Features } from "@/components/Features";
 import EmergencyContacts from "@/components/EmergencyContacts";
@@ -21,6 +22,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      <Header />
       <Hero />
       <div className="max-w-md mx-auto px-4 -mt-8 mb-8 relative z-10">
         <WeatherWidget />

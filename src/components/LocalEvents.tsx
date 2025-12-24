@@ -78,7 +78,7 @@ const LocalEvents = () => {
   const upcomingEvents = events.filter((e) => !e.featured);
 
   return (
-    <section className="py-12 px-4 bg-background">
+    <section id="events" className="py-12 px-4 bg-background scroll-mt-20">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-10">
           <h2 className="text-3xl font-bold mb-2">Local Events & Festivals</h2>
