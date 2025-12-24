@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Phone, Heart, Calendar, Link2, MessageCircle, Menu, X } from "lucide-react";
+import { Phone, Heart, Calendar, Link2, MessageCircle, Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { useTheme } from "next-themes";
 
 const navItems = [
   { id: "emergency", label: "Emergency", icon: Phone },
@@ -15,6 +16,12 @@ export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,6 +50,10 @@ export const Header = () => {
       element.scrollIntoView({ behavior: "smooth" });
     }
     setIsMobileMenuOpen(false);
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === "dark" ? "light" : "dark");
   };
 
   return (
@@ -87,20 +98,58 @@ export const Header = () => {
                 {item.label}
               </Button>
             ))}
+
+            {/* Dark Mode Toggle */}
+            {mounted && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleTheme}
+                className={cn(
+                  "ml-2 transition-colors",
+                  isScrolled
+                    ? "text-foreground hover:text-primary hover:bg-primary/10"
+                    : "text-white/90 hover:text-white hover:bg-white/10"
+                )}
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
+              </Button>
+            )}
           </nav>
 
           {/* Mobile Menu Button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className={cn(
-              "md:hidden",
-              isScrolled ? "text-foreground" : "text-white"
+          <div className="flex items-center gap-2 md:hidden">
+            {mounted && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={toggleTheme}
+                className={cn(
+                  isScrolled ? "text-foreground" : "text-white"
+                )}
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-5 w-5" />
+                ) : (
+                  <Moon className="h-5 w-5" />
+                )}
+              </Button>
             )}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className={cn(
+                isScrolled ? "text-foreground" : "text-white"
+              )}
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
