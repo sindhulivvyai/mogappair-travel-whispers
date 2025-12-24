@@ -8,6 +8,7 @@ import HealthcareDirectory from "@/components/HealthcareDirectory";
 import { QuickLinks } from "@/components/QuickLinks";
 import LocalEvents from "@/components/LocalEvents";
 import WeatherWidget from "@/components/WeatherWidget";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   const [pendingQuery, setPendingQuery] = useState<string | undefined>();
@@ -35,6 +36,7 @@ const Index = () => {
         <ChatInterface initialQuery={pendingQuery} onQueryProcessed={handleQueryProcessed} />
       </div>
       <Features />
+      <Footer />
     </div>
   );
 };
