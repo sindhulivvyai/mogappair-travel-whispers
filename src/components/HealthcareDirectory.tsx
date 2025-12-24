@@ -137,7 +137,7 @@ const HealthcareDirectory = () => {
   );
 
   return (
-    <section className="py-16 px-4 bg-background">
+    <section id="healthcare" className="py-16 px-4 bg-background scroll-mt-20">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
           <div className="flex items-center gap-3 justify-center mb-4">
